@@ -39,9 +39,15 @@ namespace WindowsFormsApplication2
                 int i;
                 for (i = 0; i < words.GetLength(0); i++)
                 {
+                    words[i] = words[i].Trim();
+
+                    if (words[i].StartsWith("http://"))
+                    {
+                        words[i] = words[i].Replace("http://", "");
+                    }
+
                     PingReply reply = pingSender.Send(words[i].Trim(), timeout, buffer, options);
                     if (reply.Status == IPStatus.Success)
-
                     {
 
                         string[] arr = new string[4];
@@ -81,6 +87,7 @@ namespace WindowsFormsApplication2
                     }
                 }
 
+
             }
             catch (Exception ex)
             {
@@ -91,9 +98,9 @@ namespace WindowsFormsApplication2
                 EventArgs e = new EventArgs();
 
                 button2_Click(sender, e);
-                MessageBox.Show("Ping Not Recieved.; " + ex.Message, "Error!", MessageBoxButtons.OKCancel);
+                MessageBox.Show("URL/IP Address not recognised; " + ex.Message, "Error!", MessageBoxButtons.OKCancel);
 
-                
+
             }
         }
         public Form1()
@@ -117,19 +124,13 @@ namespace WindowsFormsApplication2
             if (timeLeft > 0)
             {
 
-
+                int value = (int)numericUpDown1.Value;
                 // Display the new time left 
                 // by updating the Time Left label.
                 timeLeft = timeLeft - 1;
                 timeLabel.Text = timeLeft + " seconds";
 
-                int value = (int)numericUpDown1.Value * 1;
-
-                if (value > 0) { timeLeft = value;
-                }
-     
-
-                else
+                if (value == 0)
                 {
 
                     object sender2 = this;
@@ -139,8 +140,8 @@ namespace WindowsFormsApplication2
                     MessageBox.Show("value Cannot Be 0", "Error!", MessageBoxButtons.OKCancel);
                 }
 
-               
-               
+
+
             }
 
             else
@@ -220,8 +221,8 @@ namespace WindowsFormsApplication2
             listView1.Columns.Add("Quantity", 70);
 
             //Add items in the listview
-          
-           
+
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -241,7 +242,7 @@ namespace WindowsFormsApplication2
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -257,54 +258,54 @@ namespace WindowsFormsApplication2
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.linkLabel1.LinkVisited = true;
-            System.Diagnostics.Process.Start("http://www.cambridgesoftware.co.uk"); 
+            System.Diagnostics.Process.Start("http://www.cambridgesoftware.co.uk");
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.linkLabel1.LinkVisited = true;
-            System.Diagnostics.Process.Start("http://www.cambridgesoftware.co.uk"); 
+            System.Diagnostics.Process.Start("http://www.cambridgesoftware.co.uk");
         }
     }
 }
 
 
 
-            /*Add first item
-            arr[0] = "product_1";
-            arr[1] = "100";
-            arr[2] = "10";
-            itm = new ListViewItem(arr);
-            listView1.Items.Add(itm);
+/*Add first item
+arr[0] = "product_1";
+arr[1] = "100";
+arr[2] = "10";
+itm = new ListViewItem(arr);
+listView1.Items.Add(itm);
 
-            //Add second item
-            arr[0] = "product_2";
-            arr[1] = "200";
-            arr[2] = "20";
-            itm = new ListViewItem(arr);
-            listView1.Items.Add(itm);
-        }
+//Add second item
+arr[0] = "product_2";
+arr[1] = "200";
+arr[2] = "20";
+itm = new ListViewItem(arr);
+listView1.Items.Add(itm);
+}
 
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-            string productName = null;
-            string price = null;
-            string quantity = null;
+private void button1_Click_2(object sender, EventArgs e)
+{
+string productName = null;
+string price = null;
+string quantity = null;
             
-            productName = listView1.SelectedItems[0].SubItems[0].Text;
-            price = listView1.SelectedItems[0].SubItems[1].Text;
-            quantity = listView1.SelectedItems[0].SubItems[2].Text;
+productName = listView1.SelectedItems[0].SubItems[0].Text;
+price = listView1.SelectedItems[0].SubItems[1].Text;
+quantity = listView1.SelectedItems[0].SubItems[2].Text;
 
-            MessageBox.Show(productName + " , " + price + " , " + quantity);
-        }
+MessageBox.Show(productName + " , " + price + " , " + quantity);
+}
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
+private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+{
 
-        }
-    }
+}
+}
 
-        }*/
+}*/
     
     
 

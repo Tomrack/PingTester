@@ -58,9 +58,9 @@
             this.timeLabel.AutoSize = true;
             this.timeLabel.Location = new System.Drawing.Point(156, 101);
             this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(47, 13);
+            this.timeLabel.Size = new System.Drawing.Size(53, 13);
             this.timeLabel.TabIndex = 1;
-            this.timeLabel.Text = "seconds";
+            this.timeLabel.Text = "second(s)";
             // 
             // textBox1
             // 
@@ -130,6 +130,11 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(36, 20);
             this.numericUpDown1.TabIndex = 8;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // pictureBox1
