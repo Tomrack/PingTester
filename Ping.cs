@@ -98,7 +98,7 @@ namespace WindowsFormsApplication2
                 EventArgs e = new EventArgs();
 
                 button2_Click(sender, e);
-                MessageBox.Show("URL/IP Address not recognised; " + ex.Message, "Error!", MessageBoxButtons.OKCancel);
+                MessageBox.Show("URL/IP Address not recognised; If you are pinging two or more IP's separate them with a comma ' , ' " + ex.Message, "Error!", MessageBoxButtons.OKCancel);
 
 
             }
@@ -238,6 +238,12 @@ namespace WindowsFormsApplication2
         private void button3_Click(object sender, EventArgs e)
         {
             listView1.Items.Clear();
+            timer1.Stop();
+            timer1.Start();
+            timer1.Stop();
+
+            button1.Enabled = true;
+            textBox1.Enabled = true;
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
@@ -252,7 +258,7 @@ namespace WindowsFormsApplication2
 
         private void label3_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -271,7 +277,20 @@ namespace WindowsFormsApplication2
         {
             
      Application.Exit();
-} 
+}
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                if (textBox1.Text == string.Empty) return;
+                timer1.Start(); textBox1.Enabled = false;
+                button1.Enabled = false;
+                button2.Enabled = true;
+            }
+        }
+
+        
         }
     }
 
