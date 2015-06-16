@@ -266,8 +266,17 @@ namespace WindowsFormsApplication2
             this.linkLabel1.LinkVisited = true;
             System.Diagnostics.Process.Start("http://www.cambridgesoftware.co.uk");
         }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+     Application.Exit();
+} 
+        }
     }
-}
+
+
+
 
 
 
